@@ -31,14 +31,12 @@ Change them later in `/config`.
 codex plugin marketplace add koyakimu/local-llm-mcp
 ```
 
-Then install `local-llm` from `/plugins`. The plugin's server uses `http://127.0.0.1:8080/v1` and the first model
-from `/v1/models`. Codex stops a tool call after 60 seconds by default, and the first call to a local model can take
-longer (model loading, long prompts), so raise the timeout in `~/.codex/config.toml`:
+Then run `codex plugin add local-llm@koyakimu` (or install it from `/plugins`). The plugin's server uses
+`http://127.0.0.1:8080/v1` and the first model from `/v1/models`; the Codex plugin format has no user settings.
+To pick the model, point to another server, or set a timeout, register the server manually instead (below).
 
-```toml
-[mcp_servers.local-llm]
-tool_timeout_sec = 600
-```
+Do not add a `[mcp_servers.local-llm]` table to `~/.codex/config.toml` for the plugin's server: Codex reads it as a
+separate server without a command and fails to load the config (`invalid transport`).
 
 ### Any MCP client (manual)
 
@@ -49,6 +47,14 @@ claude mcp add --scope user local-llm -e LOCAL_LLM_MODEL=my-model \
 # Codex
 codex mcp add local-llm --env LOCAL_LLM_MODEL=my-model \
   -- uvx --from git+https://github.com/koyakimu/local-llm-mcp local-llm-mcp
+```
+
+Codex stops a tool call after 60 seconds by default (per its docs), and the first call to a local model can take
+longer (model loading, long prompts). For a manually registered server, raise it in `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.local-llm]
+tool_timeout_sec = 600
 ```
 
 ## Use
