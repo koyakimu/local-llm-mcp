@@ -1,0 +1,12 @@
+{
+  "name": "koyakimu",
+  "description": "Plugins by Koya Kimura",
+  "owner": { "name": "Koya Kimura", "url": "https://github.com/koyakimu" },
+  "plugins": [
+    {
+      "name": "local-llm",
+      "source": "./",
+      "description": "Hand private or bulk text work to a local OpenAI-compatible LLM"
+    }
+  ]
+}

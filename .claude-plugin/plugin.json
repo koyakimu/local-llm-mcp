@@ -1,0 +1,42 @@
+{
+  "name": "local-llm",
+  "displayName": "Local LLM",
+  "version": "0.1.0",
+  "description": "Hand private or bulk text work to a local OpenAI-compatible LLM. File contents go only to the local model.",
+  "author": { "name": "Koya Kimura", "url": "https://github.com/koyakimu" },
+  "repository": "https://github.com/koyakimu/local-llm-mcp",
+  "license": "MIT",
+  "keywords": ["mcp", "local-llm", "privacy", "llama.cpp", "ollama", "lm-studio", "mlx"],
+  "mcpServers": {
+    "local-llm": {
+      "command": "uvx",
+      "args": ["--from", "${CLAUDE_PLUGIN_ROOT}", "local-llm-mcp"],
+      "env": {
+        "LOCAL_LLM_BASE_URL": "${user_config.base_url}",
+        "LOCAL_LLM_MODEL": "${user_config.model}",
+        "LOCAL_LLM_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "userConfig": {
+    "base_url": {
+      "type": "string",
+      "title": "Base URL",
+      "description": "OpenAI-compatible API of your local LLM, ending in /v1",
+      "default": "http://127.0.0.1:8080/v1"
+    },
+    "model": {
+      "type": "string",
+      "title": "Model",
+      "description": "Model name to request. Leave empty to use the first model listed by /v1/models",
+      "default": ""
+    },
+    "api_key": {
+      "type": "string",
+      "title": "API key",
+      "description": "Only if your server requires one. Leave empty otherwise",
+      "sensitive": true,
+      "default": ""
+    }
+  }
+}
