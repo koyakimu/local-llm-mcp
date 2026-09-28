@@ -59,6 +59,14 @@ async def test_file_goes_to_local_llm_and_only_answer_comes_back(llm, tmp_path):
     assert body["model"] == "fake-model"  # picked from /v1/models
     assert MEMO in body["messages"][-1]["content"]
     assert body["chat_template_kwargs"] == {"enable_thinking": False}
+    assert body["reasoning_effort"] == "none"
+
+
+async def test_thinking_leaves_reasoning_effort_to_the_server(llm):
+    await call({"prompt": "Where is the trip?", "thinking": True})
+    (body,) = llm
+    assert body["chat_template_kwargs"] == {"enable_thinking": True}
+    assert "reasoning_effort" not in body
 
 
 async def test_output_path_keeps_answer_out_of_the_result(llm, tmp_path):

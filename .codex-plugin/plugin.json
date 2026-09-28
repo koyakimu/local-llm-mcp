@@ -1,6 +1,6 @@
 {
   "name": "local-llm",
   "description": "Hand private or bulk text work to a local OpenAI-compatible LLM. File contents go only to the local model.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "mcpServers": "./.mcp.json"
 }

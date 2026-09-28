@@ -1,6 +1,6 @@
 [project]
 name = "local-llm-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server that lets Claude Code (or any MCP client) hand private or bulk text work to a local OpenAI-compatible LLM"
 readme = "README.md"
 license = "MIT"

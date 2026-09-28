@@ -143,6 +143,9 @@ async def local_llm(
                 # Understood by llama.cpp, vLLM and mlx-lm; ignored by servers without a thinking template
                 "chat_template_kwargs": {"enable_thinking": thinking},
             }
+            if not thinking:
+                # Splash ignores chat_template_kwargs and turns thinking off only with this; mlx-lm ignores it
+                body["reasoning_effort"] = "none"
             r = await client.post(f"{BASE_URL}/chat/completions", json=body, headers=_headers())
         except httpx.HTTPError as e:
             return f"Could not reach the local LLM at {BASE_URL}: {e}"
