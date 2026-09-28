@@ -2,7 +2,7 @@
   "mcpServers": {
     "local-llm": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/koyakimu/local-llm-mcp@v0.1.0", "local-llm-mcp"],
+      "args": ["--from", "git+https://github.com/koyakimu/local-llm-mcp@v0.1.1", "local-llm-mcp"],
       "env": {
         "LOCAL_LLM_BASE_URL": "http://127.0.0.1:8080/v1"
       }

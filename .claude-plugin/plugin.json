@@ -1,7 +1,7 @@
 {
   "name": "local-llm",
   "displayName": "Local LLM",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hand private or bulk text work to a local OpenAI-compatible LLM. File contents go only to the local model.",
   "author": { "name": "Koya Kimura", "url": "https://github.com/koyakimu" },
   "repository": "https://github.com/koyakimu/local-llm-mcp",

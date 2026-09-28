@@ -75,7 +75,7 @@ Ask things like:
 | `output_path` | Write the answer to this new file and return only a notice. Existing files are never overwritten |
 | `system` | Optional system prompt |
 | `max_tokens` | Maximum tokens to generate |
-| `thinking` | Sends `chat_template_kwargs: {"enable_thinking": ...}` (llama.cpp, vLLM, mlx-lm). Off by default because thinking makes every call much slower |
+| `thinking` | Sends `chat_template_kwargs: {"enable_thinking": ...}` (llama.cpp, vLLM, mlx-lm), plus `reasoning_effort: "none"` when off (Splash). Off by default because thinking makes every call much slower |
 
 ## Configuration
 
